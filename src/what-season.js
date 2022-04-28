@@ -30,4 +30,3 @@ function getSeason(date) {
 module.exports = {
   getSeason
 };
-// npm run test ./test/what-season.test.js
