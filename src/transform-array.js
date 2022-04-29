@@ -13,10 +13,36 @@ const { NotImplementedError } = require('../extensions/index.js');
  * transform([1, 2, 3, '--discard-prev', 4, 5]) => [1, 2, 4, 5]
  * 
  */
-function transform(/* arr */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
-}
+ function transform(arr) {
+
+  if(!(arr instanceof Array)) throw new Error ("'arr' parameter must be an instance of the Array!");
+  
+  const copyArr = [...arr];
+  const toDelete = 'toDelete';
+  for(let i = 0; i <= copyArr.length; i++) {
+     switch (copyArr[i]) {
+        case "--discard-next":
+          copyArr[i] = toDelete;
+           if (i !== copyArr.length - 1) copyArr[i + 1] = toDelete;
+           break;
+        case "--discard-prev":
+          copyArr[i] = toDelete;
+           if (i !== 0) copyArr[i - 1] = toDelete;
+           break;
+        case "--double-next":
+          copyArr[i] = toDelete;
+           if (i !== copyArr.length - 1) copyArr.splice(i + 1, 0, copyArr[i + 1]);
+           break;
+        case "--double-prev":
+           copyArr[i] = toDelete;
+           if (i !== 0 && copyArr[i - 1] !== toDelete) copyArr.splice(i, 0, copyArr[i - 1]);
+           break;
+     }      
+  }
+
+  return copyArr.filter(item => item !== toDelete);  
+ }
+
 
 module.exports = {
   transform
