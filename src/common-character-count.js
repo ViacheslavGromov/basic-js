@@ -24,4 +24,3 @@ function getCommonCharacterCount(str1, str2) {
 module.exports = {
   getCommonCharacterCount
 };
-// npm run test ./test/common-character-count.test.js
