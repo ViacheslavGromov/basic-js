@@ -15,7 +15,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function isMAC48Address(str) {
-  
+
   const ValidLettersNumbers = ['A', 'B', 'C', 'D', 'E', 'F', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
   const validLength = 12
   const splitStr = str.split('-').join('').split('')
@@ -26,4 +26,3 @@ function isMAC48Address(str) {
 module.exports = {
   isMAC48Address
 };
-// npm run test ./test/mac-address.test.js
